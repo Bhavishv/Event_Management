@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://www.example.com/your-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .toggle {
+            margin-top: 15px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+        <form id="login-form" action="/login" method="post" onsubmit="handleLogin(event)">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>
+        <div class="toggle">
+            <p>Don't have an account? <a href="#" id="toggle-link">Sign Up</a></p>
+        </div>
+        <form id="signup-form" action="/signup" method="post" style="display: none;" onsubmit="handleSignup(event)">
+            <h2>Sign Up</h2>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="new-username">Username</label>
+            <input type="text" id="new-username" name="new-username" required>
+            <label for="new-password">Password</label>
+            <input type="password" id="new-password" name="new-password" required>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+    <script>
+        const toggleLink = document.getElementById('toggle-link');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const formTitle = document.getElementById('form-title');
+        
+        toggleLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                formTitle.textContent = 'Login';
+                toggleLink.textContent = "Don't have an account? Sign Up";
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                formTitle.textContent = 'Sign Up';
+                toggleLink.textContent = "Already have an account? Login";
+            }
+        });
+
+        function handleLogin(event) {
+            event.preventDefault();
+            window.location.href = 'category.html';
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            window.location.href = 'category.html';
+        }
+    </script>
+</body>
+</html>

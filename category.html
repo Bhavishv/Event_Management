@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0f0f0f;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            color: #a2a3a4;
+            margin-bottom: 40px;
+        }
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .menu-box {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 280px;
+            text-align: center;
+            position: relative;
+        }
+        .menu-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin: 10px 0;
+            color: #7f8c8d;
+        }
+        .open-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .open-button:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            .menu-box {
+                width: 100%;
+            }
+        }
+        .kebab-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .kebab-menu div {
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            margin: 3px 0;
+            border-radius: 50%;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            background-color: white;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>EVENT MENU</h1>
+    <div class="kebab-menu" onclick="toggleDropdown()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="dropdown" id="dropdown">
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+    </div>
+    <div class="menu-container">
+        <div class="menu-box" aria-labelledby="food">
+            <h2 id="food">Food</h2>
+            <ul>
+                <li> Appetizers: Spring Rolls, Stuffed Mushrooms</li>
+                <li> Main Course: Grilled Chicken, Vegetarian Lasagna</li>
+                <li> Desserts: Chocolate Mousse, Fruit Tart</li>
+            </ul>
+            <a href="food.html" class="open-button" aria-label="Open Food Menu">Open</a>
+        </div>
+        <div class="menu-box" aria-labelledby="decoration">
+            <h2 id="decoration">Decoration</h2>
+            <ul>
+                <li> Table Centerpieces: Fresh Flowers, Candles</li>
+                <li> Theme Colors: Blue and Silver</li>
+                <li> Lighting Decor: Fairy Lights, Lanterns</li>
+            </ul>
+            <a href="decor.html" class="open-button" aria-label="Open Decoration Menu">Open</a>
+        </div>
+        <div class="menu-box" aria-labelledby="sound">
+            <h2 id="sound">Sound Arrangements</h2>
+            <ul>
+                <li> Background Music Playlist</li>
+                <li> Live Band or DJ</li>
+                <li> Microphones for Speeches</li>
+            </ul>
+            <a href="sounds.html" class="open-button" aria-label="Open Sound Arrangements Menu">Open</a>
+        </div>
+        <div class="menu-box" aria-labelledby="lighting">
+            <h2 id="lighting">Lighting</h2>
+            <ul>
+                <li> Ambient Lighting: Soft Warm Lights</li>
+                <li> Spotlights for Performances</li>
+                <li> Color Washes for Theme</li>
+            </ul>
+            <a href="lightings.html" class="open-button" aria-label="Open Lighting Menu">Open</a>
+        </div>
+        <div class="menu-box" aria-labelledby="venue">
+            <h2 id="venue">Venue</h2>
+            <ul>
+                <li> Location: Grand Hall, City Center</li>
+                <li> Time: 5:00 PM - 10:00 PM</li>
+                <li> Parking: Available on-site</li>
+            </ul>
+            <a href="venue.html" class="open-button" aria-label="Open Venue Details">Open</a>
+        </div>
+        <div class="menu-box" aria-labelledby="beverages">
+            <h2 id="beverages">Beverages</h2>
+            <ul>
+                <li> Cocktails: Mojito, Margarita</li>
+                <li> Wine: Red, White, and Sparkling</li>
+                <li> Non-Alcoholic: Soft Drinks, Juices</li>
+            </ul>
+            <a href="beverages.html" class="open-button" aria-label="Open Beverages Menu">Open</a>
+        </div>
+    </div>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdown");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

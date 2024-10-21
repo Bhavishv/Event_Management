@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page with Payment</title>
+    <link rel="stylesheet" href="payment.css">
+    <style>
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Account</h1>
+        <form id="registration-form" action="#" method="POST" onsubmit="showSuccessMessage(event)">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Contact Information</legend>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip">Zip Code:</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Account Details</legend>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm_password" required>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Payment Information</legend>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method:</label>
+                    <select id="payment-method" name="payment_method" onchange="togglePaymentFields()" required>
+                        <option value="">Select...</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="google-pay">Google Pay</option>
+                        <option value="upi">UPI</option>
+                    </select>
+                </div>
+                <div id="card-info" class="payment-info" style="display:none;">
+                    <div class="form-group">
+                        <label for="card-name">Cardholder Name:</label>
+                        <input type="text" id="card-name" name="card_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" name="card_number">
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry">Expiry Date:</label>
+                        <input type="month" id="expiry" name="expiry">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv">
+                    </div>
+                </div>
+                <div id="google-pay-info" class="payment-info" style="display:none;">
+                    <div class="form-group">
+                        <label for="google-email">Google Pay Email:</label>
+                        <input type="email" id="google-email" name="google_email">
+                    </div>
+                </div>
+                <div id="upi-info" class="payment-info" style="display:none;">
+                    <div class="form-group">
+                        <label for="upi-id">UPI ID:</label>
+                        <input type="text" id="upi-id" name="upi_id">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Preferences</legend>
+                <div class="form-group">
+                    <label for="newsletter">Subscribe to Newsletter:</label>
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                </div>
+                <div class="form-group">
+                    <label for="preferences">Preferred Contact Method:</label>
+                    <select id="preferences" name="contact_method">
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                    </select>
+                </div>
+            </fieldset>
+            <button type="submit">Place Your Order</button>
+        </form>
+        <div class="success-message" id="success-message">
+            Ordered Successfully
+        </div>
+    </div>
+    <script>
+        function togglePaymentFields() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            document.getElementById('card-info').style.display = paymentMethod === 'card' ? 'block' : 'none';
+            document.getElementById('google-pay-info').style.display = paymentMethod === 'google-pay' ? 'block' : 'none';
+            document.getElementById('upi-info').style.display = paymentMethod === 'upi' ? 'block' : 'none';
+        }
+
+        function showSuccessMessage(event) {
+            event.preventDefault();
+            document.getElementById('success-message').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
