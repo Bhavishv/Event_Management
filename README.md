@@ -1,5 +1,5 @@
 <b><h1><b>Introduction</b></h1>
-Our Event Management website aims to provide a comprehensive solution for planning and organizing events of all scales. From corporate conferences to social gatherings, our platform simplifies the process, ensuring a seamless and enjoyable experience for both event planners and attendees.
+Our Event Management website aims to provide a comprehensive solution for planning and organizing events of all scales. From corporate conferences to social gatherings, our platform simplifies the process, ensuring a seamless and enjoyable experience for both event planners.
 
 <h1><b>About</b></h1>
 Our platform is designed to streamline event management by offering various tools and features that cater to all aspects of event planning. Users can manage guest lists, handle RSVPs, coordinate with vendors, and ensure that every detail is taken care of, all from a single, user-friendly interface.
@@ -14,12 +14,11 @@ Payment Gateway Integration (for processing payments)
 
 <h1><b>Features</b></h1>
 <b>User Authentication: Secure login and registration for users.<br>
-<b>Event Creation: Users can create events with details like date, time, venue, and more.<b>
+<b>Event Creation: Users can create events with details like date, time, venue, and more.<br>
 <b>Guest Management:  Easily manage guest lists, send invitations, and track RSVPs.<br>
 <b>Vendor Coordination: Manage and coordinate with vendors for catering, decorations, and other services.<br>
 <b>Real-time Updates: Get real-time updates on event changes and notifications.<br>
 <b>Payment Processing: Secure payment gateway for ticket sales and vendor payments.<br>
-<b>Reporting and Analytics: Detailed reports and analytics on event attendance, feedback, and more.<br></b>
 
 <h1><b>Future Improvements</b></h1>
 <b>Enhanced Customization:</b> Allow users to further customize their event pages with themes and personalized layouts.<br>
